@@ -4,3 +4,5 @@ $assem = [System.Reflection.Assembly]::Load($data)
 $class = $assem.GetType("ClassLibrary1.Class1")
 $method = $class.GetMethod("Runner")
 $method.Invoke(0, $null)
+
+Remove-Variable -Name data,assem,class,method -ErrorAction SilentlyContinue -Force
