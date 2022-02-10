@@ -63,3 +63,5 @@ Your job to find a way for injecting this command :)
 # Credits
 - purpl3f0x
 
+# Disclaimer
+All the techniques provided here are solely meant for educational purposes only. All of the techniques taught here are only meant to be used in a closed laboratory environment or in consent with a second party.
