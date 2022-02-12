@@ -34,7 +34,7 @@ The output will be ClassLibrary1.dll, the payload.
 
 Now we have the .dll, we can host it in a remote server or ourselves with the command below after we have inserted the .dll in /var/www/html/
 
-        service apache start
+        service apache2 start
 
 **#4** Now we just need to execute the .dll in memory, so we do a .ps1 script to do that, we can name it *download_cradle.ps1* also also this needs to be placed in /var/www/html:
 
