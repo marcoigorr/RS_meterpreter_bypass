@@ -1,5 +1,5 @@
 # RS_meterpreter_bypass
-Get a Meterpreter reverse_tcp shell bypassing AV.
+Get a Meterpreter reverse_tcp shell and bypass AV.
 These two C# programs are used to encode and create a .dll file from a starting metasploit xor encoded reverse_tcp payload.
         
 - Generate your payload **#1**
