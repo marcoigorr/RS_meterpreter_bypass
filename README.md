@@ -73,6 +73,25 @@ Now we just wait for the victim to issue the command:
 
 Your job to find a way for injecting this command :)
 
+# Useful informations
+Powershell history can be found at:
+
+        C:\Users\USER\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+
+Or with the command...
+        
+        (Get-PSReadlineOption).HistorySavePath
+        
+You can delete it with:
+        
+        Remove-Item -path C:\Users\USER\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+        
+This simple command will do everything:
+
+         Remove-Item -path (Get-PSReadlineOption).HistorySavePath
+    
+The system will recreate the file as soon as we execute a new command, no worries
+
 # Credits
 - purpl3f0x
 
