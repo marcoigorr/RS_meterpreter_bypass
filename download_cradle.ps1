@@ -3,3 +3,5 @@
     $class = $assem.GetType("ClassLibrary1.Class1")
     $method = $class.GetMethod("Runner")
     $method.Invoke(0, $null)
+    
+    Remove-Item -path (Get-PSReadlineOption).HistorySavePath
