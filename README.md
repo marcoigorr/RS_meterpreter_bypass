@@ -90,7 +90,7 @@ This simple command will do everything:
 
          Remove-Item -path (Get-PSReadlineOption).HistorySavePath
     
-The system will recreate the file as soon as we execute a new command, no worries
+The system will recreate the file as soon as we execute a new command, no worries.
 
 # Credits
 - purpl3f0x
